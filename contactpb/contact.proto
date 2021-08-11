@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package contact;
+
+option go_package="contactpb";
+
+message Contact {
+    string phoneNumber = 1;
+    string name = 2;
+    string address = 3;
+}
+
+message InsertRequest {
+    Contact contact = 1;
+}
+
+message InsertResponse {
+    int32 statusCode = 1;
+    string message = 2;
+}
+
+service ContactService {
+    rpc Insert(InsertRequest) returns (InsertResponse) {}
+}
+
